@@ -45,6 +45,27 @@ class MinioPage {
 
     return files;
   }
+
+  async clickOnCsvFile(fileNamePrefix) {
+    // Cliquer sur le fichier CSV dont le nom commence par fileNamePrefix (ex: "isin_data_")
+    const fileSpan = this.page.locator('.fileNameText').filter({ hasText: fileNamePrefix });
+    await fileSpan.first().click();
+    // Attendre que la page de détail/preview se charge
+    await this.page.waitForTimeout(2000);
+  }
+
+  async downloadFile() {
+    // Cliquer sur le bouton Download et capturer le fichier téléchargé
+    const [download] = await Promise.all([
+      this.page.waitForEvent('download', { timeout: 30000 }),
+      this.page.locator('button', { hasText: 'Download' }).click(),
+    ]);
+    // Sauvegarder le fichier et retourner le chemin
+    const filePath = await download.path();
+    const suggestedName = download.suggestedFilename();
+    console.log(`[MinIO] Fichier téléchargé: ${suggestedName}`);
+    return { filePath, suggestedName };
+  }
 }
 
 module.exports = { MinioPage };
