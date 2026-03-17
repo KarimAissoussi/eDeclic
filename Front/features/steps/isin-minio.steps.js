@@ -25,11 +25,19 @@ Given("j'appelle l'API ISIN avec les codes suivants", async ({ request }, dataTa
     headers: { 'Content-Type': 'application/json' },
   });
   apiResponseStatus = response.status();
-  console.log(`\n[API ISIN] POST ${process.env.ISIN_API_URL}`);
-  console.log(`[API ISIN] Codes envoyés: ${sentIsinCodes.join(', ')}`);
-  console.log(`[API ISIN] Nombre: ${sentIsinCodes.length}`);
-  console.log(`[API ISIN] Status: ${apiResponseStatus}`);
-  console.log(`[API ISIN] Heure: ${apiCallTime.toLocaleTimeString('fr-FR')}`);
+  console.log(`\n╔══════════════════════════════════════════════╗`);
+  console.log(`║        API ISIN - Requête envoyée            ║`);
+  console.log(`╠══════════════════════════════════════════════╣`);
+  console.log(`║  URL    : POST ${process.env.ISIN_API_URL}`);
+  console.log(`║  Headers: Content-Type: application/json`);
+  console.log(`║  Body   :`);
+  console.log(JSON.stringify(lastPayload, null, 2));
+  console.log(`╠══════════════════════════════════════════════╣`);
+  console.log(`║  Codes envoyés : ${sentIsinCodes.join(', ')}`);
+  console.log(`║  Nombre        : ${sentIsinCodes.length}`);
+  console.log(`║  Status        : ${apiResponseStatus}`);
+  console.log(`║  Heure         : ${apiCallTime.toLocaleTimeString('fr-FR')}`);
+  console.log(`╚══════════════════════════════════════════════╝`);
 });
 
 Then('le code retour est {int}', async ({}, expectedStatus) => {
