@@ -1,0 +1,26 @@
+# Env
+.env
+
+# Dependencies
+node_modules/
+
+# Playwright BDD (generated)
+.features-gen/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# IDE
+.vscode/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Lock file (optionnel, décommenter si tu veux le garder)
+# package-lock.json
