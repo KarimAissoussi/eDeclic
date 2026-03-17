@@ -6,7 +6,10 @@
   "scripts": {
     "bddgen": "npx bddgen",
     "test": "npx bddgen && npx playwright test",
-    "test:headed": "npx bddgen && npx playwright test --headed"
+    "navig": "npx bddgen && npx playwright test --headed",
+    "catalogue": "npx bddgen && npx playwright test catalogue --headed",
+    "isin": "npx bddgen && npx playwright test isin-minio --headed",
+    "report": "npx playwright show-report"
   },
   "keywords": [],
   "author": "",

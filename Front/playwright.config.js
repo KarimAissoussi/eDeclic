@@ -18,15 +18,16 @@ module.exports = defineConfig({
   reporter: 'html',
   use: {
     trace: 'on-first-retry',
-    viewport: { width: 1920, height: 1080 },
+    viewport: null,
     launchOptions: {
       slowMo: 200,
+      args: ['--start-maximized'],
     },
   },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], viewport: null, deviceScaleFactor: undefined },
     },
   ],
 });
